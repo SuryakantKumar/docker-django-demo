@@ -1,0 +1,14 @@
+# version for docker compose
+version: '3'
+
+services: 
+    # service of oour project here is 'web'
+    web:
+        # building current folder
+        build: .
+        command: python manage.py runserver 0.0.0.0:8000
+        # putting all oour data in the container inside /app so that when we destroy the container our data won't lost 
+        volumes: 
+            - .:/app
+        ports: 
+            - "8000:8000"
